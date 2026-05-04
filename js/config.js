@@ -23,24 +23,24 @@ const SITE_CONFIG = {
 // API站点配置
 const API_SITES = {
     testSource: {
-        api: 'https://www.example.com/api.php/provide/vod',
+        api: 'http://vipmv.cc/api.php/provide/vod⁠',
         name: '空内容测试源',
         adult: true
     },
 
     // ================== 你添加的资源 ==================
     quanzi: {
-        api: 'https://cj.lziapi.com',
+        api: 'http://cj.lziapi.com/api.php/provide/vod/from/lzm3u8',
         name: '量子资源',
         adult: false
     },
     hongniu: {
-        api: 'http://hongniuzy2.com',
+        api: 'http://hongniuzy2.com/api.php/provide/vod/from/hnm3u8',
         name: '红牛资源',
         adult: false
     },
     ffzy: {
-        api: 'http://ffzy5.tv',
+        api: 'http://api.1080zyku.com/inc/api.php/provide/vod',
         name: '非凡资源',
         adult: false
     },
