@@ -26,10 +26,26 @@ const API_SITES = {
         api: 'https://www.example.com/api.php/provide/vod',
         name: '空内容测试源',
         adult: true
-    }
-    //ARCHIVE https://telegra.ph/APIs-08-12
-};
+    },
 
+    // ================== 你添加的资源 ==================
+    quanzi: {
+        api: 'https://cj.lziapi.com',
+        name: '量子资源',
+        adult: false
+    },
+    hongniu: {
+        api: 'http://hongniuzy2.com',
+        name: '红牛资源',
+        adult: false
+    },
+    ffzy: {
+        api: 'http://ffzy5.tv',
+        name: '非凡资源',
+        adult: false
+    },
+    // 再加几个你觉得好用的...
+};
 // 定义合并方法
 function extendAPISites(newSites) {
     Object.assign(API_SITES, newSites);
