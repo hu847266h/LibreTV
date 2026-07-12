@@ -213,6 +213,14 @@ async function handlePasswordSubmit() {
 
         // 触发密码验证成功事件
         document.dispatchEvent(new CustomEvent('passwordVerified'));
+
+        // 后端 session 登录（失败不影响前端功能）
+        fetch('/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ password }),
+            credentials: 'same-origin',
+        }).then(r => r.json()).catch(() => {});
     } else {
         showPasswordError();
         if (passwordInput) {

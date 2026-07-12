@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设备管理 - LibreTV</title>
+    <link rel="icon" href="image/logo.png">
+    <link rel="stylesheet" href="css/admin.css">
+
+    <!-- 环境变量注入占位 -->
+    <script>
+        window.__ENV__ = window.__ENV__ || {};
+        window.__ENV__.PASSWORD = "{{PASSWORD}}";
+    </script>
+</head>
+<body>
+    <!-- 顶栏 -->
+    <header class="admin-header">
+        <h1>🔐 设备管理</h1>
+        <nav class="admin-nav">
+            <a href="/">← 返回主页</a>
+        </nav>
+    </header>
+
+    <!-- 主体 -->
+    <main class="admin-main">
+        <!-- 活跃设备 -->
+        <section class="panel" id="sessionsPanel">
+            <div class="panel-header">
+                <h2>📱 活跃设备 <span id="sessionCount" class="stat-badge">加载中…</span></h2>
+                <div class="flex gap-2">
+                    <button id="kickAllOthersBtn" class="btn-danger-outline" style="display:none">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                        踢出所有其他设备
+                    </button>
+                    <button id="refreshSessionsBtn" class="btn-primary" onclick="loadSessions()" style="padding:6px 14px;font-size:12px">🔄 刷新</button>
+                </div>
+            </div>
+            <div class="panel-body" id="sessionList">
+                <div class="empty-state">加载中…</div>
+            </div>
+        </section>
+
+        <!-- 登录历史 -->
+        <section class="panel">
+            <div class="panel-header">
+                <h2>📋 登录历史</h2>
+                <button id="refreshHistoryBtn" class="btn-primary" onclick="loadHistory()" style="padding:6px 14px;font-size:12px">🔄 刷新</button>
+            </div>
+            <div class="panel-body" id="historyList">
+                <div class="empty-state">加载中…</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast -->
+    <div id="toast" class="toast"></div>
+
+    <!-- 脚本 -->
+    <script src="js/session-api.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
