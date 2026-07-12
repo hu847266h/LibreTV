@@ -25,21 +25,20 @@ document.addEventListener('DOMContentLoaded', function () {
     // 渲染搜索历史
     renderSearchHistory();
 
-    // 设置默认API选择（如果是第一次加载）
-    if (!localStorage.getItem('hasInitializedDefaults')) {
-        // 默认选中所有自定义源（CUSTOMER_SITES）
-        const customerKeys = typeof CUSTOMER_SITES !== 'undefined' ? Object.keys(CUSTOMER_SITES) : [];
-        selectedAPIs = customerKeys.length > 0 ? customerKeys : ["tyyszy", "bfzy", "dyttzy", "ruyi"];
+    // 每次加载时自动选中所有自定义源（CUSTOMER_SITES）
+    const customerKeys = typeof CUSTOMER_SITES !== 'undefined' ? Object.keys(CUSTOMER_SITES) : [];
+    if (customerKeys.length > 0) {
+        // 合并：保留已有选中 + 确保所有自定义源都被选中
+        const merged = new Set([...selectedAPIs, ...customerKeys]);
+        selectedAPIs = [...merged];
         localStorage.setItem('selectedAPIs', JSON.stringify(selectedAPIs));
+    }
 
-        // 默认选中过滤开关
+    // 设置默认过滤开关（仅首次）
+    if (!localStorage.getItem('hasInitializedDefaults')) {
         localStorage.setItem('yellowFilterEnabled', 'true');
         localStorage.setItem(PLAYER_CONFIG.adFilteringStorage, 'true');
-
-        // 默认启用豆瓣功能
         localStorage.setItem('doubanEnabled', 'true');
-
-        // 标记已初始化默认值
         localStorage.setItem('hasInitializedDefaults', 'true');
     }
 
