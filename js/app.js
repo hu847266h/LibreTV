@@ -13,22 +13,9 @@ let episodesReversed = false;
 
 // 页面初始化
 document.addEventListener('DOMContentLoaded', function () {
-    // 初始化API复选框
-    initAPICheckboxes();
-
-    // 初始化自定义API列表
-    renderCustomAPIsList();
-
-    // 初始化显示选中的API数量
-    updateSelectedApiCount();
-
-    // 渲染搜索历史
-    renderSearchHistory();
-
     // 每次加载时自动选中所有自定义源（CUSTOMER_SITES）
     const customerKeys = typeof CUSTOMER_SITES !== 'undefined' ? Object.keys(CUSTOMER_SITES) : [];
     if (customerKeys.length > 0) {
-        // 合并：保留已有选中 + 确保所有自定义源都被选中
         const merged = new Set([...selectedAPIs, ...customerKeys]);
         selectedAPIs = [...merged];
         localStorage.setItem('selectedAPIs', JSON.stringify(selectedAPIs));
@@ -41,6 +28,18 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem('doubanEnabled', 'true');
         localStorage.setItem('hasInitializedDefaults', 'true');
     }
+
+    // 初始化API复选框（必须在合并 selectedAPIs 之后）
+    initAPICheckboxes();
+
+    // 初始化自定义API列表
+    renderCustomAPIsList();
+
+    // 初始化显示选中的API数量
+    updateSelectedApiCount();
+
+    // 渲染搜索历史
+    renderSearchHistory();
 
     // 设置黄色内容过滤器开关初始状态
     const yellowFilterToggle = document.getElementById('yellowFilterToggle');
