@@ -3,23 +3,22 @@ compatibility_date = "2024-09-23"
 pages_build_output_dir = "."
 
 # Cloudflare Pages bindings
-# 在 Cloudflare Dashboard 中创建以下资源，并把 ID 填到下方：
-# 1. KV Namespace (名称: LIBRETV_SESSIONS) -> 用于 session 存储
-# 2. D1 Database (名称: libretv-db) -> 用于登录历史/审计日志
+# 一键设置（推荐）：配置环境变量后运行 npm run setup
+#   set CLOUDFLARE_API_TOKEN=xxxx
+#   set CLOUDFLARE_ACCOUNT_ID=xxxx
+#   npm run setup
 #
-# 创建命令：
+# 手动创建：
 #   wrangler kv namespace create LIBRETV_SESSIONS
 #   wrangler d1 create libretv-db
-#
-# 然后把返回的 id 填到下面，再执行：
 #   wrangler d1 execute libretv-db --file=./schema.sql --remote
 
 [[kv_namespaces]]
 binding = "SESSIONS"
-id = "REPLACE_WITH_KV_ID"          # TODO: 替换为实际 KV namespace id
+id = "REPLACE_WITH_KV_ID"          # npm run setup 会自动替换
 preview_id = "REPLACE_WITH_KV_PREVIEW_ID"
 
 [[d1_databases]]
 binding = "DB"
 database_name = "libretv-db"
-database_id = "REPLACE_WITH_D1_ID" # TODO: 替换为实际 D1 database id
+database_id = "REPLACE_WITH_D1_ID" # npm run setup 会自动替换
