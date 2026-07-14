@@ -2,23 +2,21 @@ name = "libretv"
 compatibility_date = "2024-09-23"
 pages_build_output_dir = "."
 
-# Cloudflare Pages bindings
-# 一键设置（推荐）：配置环境变量后运行 npm run setup
+# ⚠ 重要: 不在 wrangler.toml 写 KV/D1 绑定！
+# Cloudflare Pages 会读取 wrangler.toml 的绑定声明，
+# 占位符 ID 会导致部署失败 Error 8000022。
+#
+# 绑定方式（二选一）：
+#
+# 方式 A — 一键自动设置（推荐）：
 #   set CLOUDFLARE_API_TOKEN=xxxx
 #   set CLOUDFLARE_ACCOUNT_ID=xxxx
 #   npm run setup
+#   → 自动创建 KV/D1 并通过 API 绑定到 Pages 项目
 #
-# 手动创建：
-#   wrangler kv namespace create LIBRETV_SESSIONS
-#   wrangler d1 create libretv-db
-#   wrangler d1 execute libretv-db --file=./schema.sql --remote
-
-[[kv_namespaces]]
-binding = "SESSIONS"
-id = "REPLACE_WITH_KV_ID"          # npm run setup 会自动替换
-preview_id = "REPLACE_WITH_KV_PREVIEW_ID"
-
-[[d1_databases]]
-binding = "DB"
-database_name = "libretv-db"
-database_id = "REPLACE_WITH_D1_ID" # npm run setup 会自动替换
+# 方式 B — 手动在 Dashboard 绑定：
+#   1. CF Dashboard → Workers & Pages → KV → 创建 LIBRETV_SESSIONS
+#   2. CF Dashboard → Workers & Pages → D1 → 创建 libretv-db
+#   3. Pages 项目 → Settings → Functions → KV namespace bindings → SESSIONS
+#   4. Pages 项目 → Settings → Functions → D1 database bindings → DB
+#   5. Pages 项目 → Settings → Functions → 执行 D1: schema.sql
