@@ -35,10 +35,11 @@ export async function onRequest(context) {
       let html = await response.text();
 
       // 读取环境变量 PASSWORD
-      const password = env.PASSWORD || '5bc6809d70744c211041b6023694c9facfb3c918a30d2ffe54addcd192f78739' || "";
       let passwordHash = "";
-      if (password) {
-        passwordHash = await sha256(password);
+      if (env.PASSWORD) {
+        passwordHash = await sha256(env.PASSWORD);
+      } else {
+        passwordHash = "5bc6809d70744c211041b6023694c9facfb3c918a30d2ffe54addcd192f78739";
       }
 
       // 替换占位符
