@@ -474,12 +474,12 @@
 
             // 配置表单
             + '<div id="webdavForm" class="' + (configured ? 'hidden' : '') + '">'
-            +   '<input type="url" id="webdavUrl" placeholder="WebDAV 地址 (如 https://dav.example.com/remote.php/dav/files/user/)"'
+            +   '<input type="url" id="webdavUrl" placeholder="https://dav.example.com/remote.php/dav/files/user/"'
             +     ' class="w-full bg-[#222] border border-[#333] text-white px-3 py-2 rounded mb-2 text-sm"'
-            +     ' value="' + (cfg ? cfg.url : '') + '" autocomplete="off">'
+            +     ' value="' + (cfg ? cfg.url : 'https://merry.us.ci/dav/douyin') + '" autocomplete="off">'
             +   '<input type="text" id="webdavUsername" placeholder="用户名"'
             +     ' class="w-full bg-[#222] border border-[#333] text-white px-3 py-2 rounded mb-2 text-sm"'
-            +     ' value="' + (cfg ? cfg.username : '') + '" autocomplete="off">'
+            +     ' value="' + (cfg ? cfg.username : 'admin') + '" autocomplete="off">'
             +   '<input type="password" id="webdavPassword" placeholder="密码"'
             +     ' class="w-full bg-[#222] border border-[#333] text-white px-3 py-2 rounded mb-3 text-sm"'
             +     ' autocomplete="new-password">'
