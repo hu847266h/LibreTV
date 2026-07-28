@@ -543,6 +543,9 @@ function renderDoubanCards(data, container) {
                         onerror="this.onerror=null; this.src='${proxiedCoverUrl}'; this.classList.add('object-contain');"
                         loading="lazy" referrerpolicy="no-referrer">
                     <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                    <div class="absolute top-2 right-2 z-10" onclick="event.stopPropagation();">
+                        ${getFavoriteButtonHtml({vod_id: item.url || item.title, vod_name: item.title, vod_pic: item.cover, type_name: (item.type || ""), vod_year: (item.year || ""), vod_remarks: "", source_name: "豆瓣", source_code: "douban", api_url: ""})}
+                    </div>
                     <div class="absolute bottom-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded-sm">
                         <span class="text-yellow-400">★</span> ${safeRate}
                     </div>
