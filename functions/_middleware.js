@@ -1,4 +1,4 @@
-// LibreTV Cloudflare Pages Middleware
+﻿// LibreTV Cloudflare Pages Middleware
 // 处理密码环境变量注入 + 设备管理 API 路由
 
 // SHA-256 内联实现（Cloudflare Workers 环境使用 Web Crypto API）
@@ -35,7 +35,7 @@ export async function onRequest(context) {
       let html = await response.text();
 
       // 读取环境变量 PASSWORD
-      const password = env.PASSWORD || "";
+      const password = env.PASSWORD || '5bc6809d70744c211041b6023694c9facfb3c918a30d2ffe54addcd192f78739' || "";
       let passwordHash = "";
       if (password) {
         passwordHash = await sha256(password);
