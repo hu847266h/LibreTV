@@ -218,7 +218,7 @@ function renderFavoritesContent() {
         const apiUrlAttr = item.api_url ? ' data-api-url="' + esc(item.api_url) + '"' : '';
         const addTime = formatTimestamp(item.addedAt);
         return '<div class="flex items-center gap-3 p-2 rounded-lg bg-[#1a1a1a] hover:bg-[#222] transition-colors cursor-pointer group"'
-            + ' onclick="showDetails(\'' + safeId + '\',\'' + safeName + '\',\'' + safeCode + '\')"' + apiUrlAttr + '>'
+            + ' onclick="(function(){var si=\'' + safeId + '\';var sc=\'' + safeCode + '\';if(sc===\'douban\')fillAndSearchWithDouban(\'' + safeName + '\');else showDetails(si,\'' + safeName + '\',sc);})()"' + apiUrlAttr + '>'
             + (item.vod_pic ? '<div class="flex-shrink-0 w-12 h-16 rounded overflow-hidden bg-[#111]">'
                 + '<img src="' + item.vod_pic + '" alt="' + safeName + '" class="w-full h-full object-cover" loading="lazy"'
                 + ' onerror="this.onerror=null; this.style.display=\'none\';">'
