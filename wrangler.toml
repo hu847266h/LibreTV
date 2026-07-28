@@ -1,5 +1,9 @@
-name = "libretv"
+﻿name = "libretv"
 compatibility_date = "2024-09-23"
+
+# Environment variables
+[vars]
+PASSWORD = "hu847266"
 pages_build_output_dir = "."
 
 # Cloudflare Pages bindings
@@ -15,3 +19,4 @@ id = "12a21fcdafe34082b95089642077b232"
 binding = "DB"
 database_name = "libretv-db"
 database_id = "f5e416af-cc48-4047-8acf-6614299026ed"
+
