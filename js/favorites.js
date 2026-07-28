@@ -93,7 +93,7 @@ function getFavoriteButtonHtml(item) {
     const heartIcon = isFav ? '\u2764\ufe0f' : '\u{1F90D}';
     const favClass = isFav ? 'favorited' : '';
     const esc = s => (s || '').replace(/"/g, '&quot;');
-    return '<button class="fav-btn ' + favClass + ' text-sm leading-none hover:scale-125 transition-transform p-1"' +
+    return '<button class="fav-btn ' + favClass + ' text-sm leading-none hover:scale-125 transition-transform p-1" onclick="event.stopPropagation();toggleFavoriteByAttr(this)"' +
         ' data-vod-id="' + vodId + '" data-source-code="' + sourceCode + '"' +
         ' data-vod-name="' + esc(item.vod_name) + '"' +
         ' data-vod-pic="' + esc(item.vod_pic) + '"' +
@@ -102,7 +102,8 @@ function getFavoriteButtonHtml(item) {
         ' data-vod-remarks="' + esc(item.vod_remarks) + '"' +
         ' data-source-name="' + esc(item.source_name) + '"' +
         ' data-api-url="' + esc(item.api_url) + '"' +
-        ' title="' + (isFav ? '取消收藏' : '添加收藏') + '">' + heartIcon + '</button>';
+        ' title="' + (isFav ? '取消收藏' : '添加收藏') + '"' +
+        '>' + heartIcon + '</button>';
 }
 
 // ==== 面板切换 ====
