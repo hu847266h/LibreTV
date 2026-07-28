@@ -43,7 +43,7 @@ export async function onRequest(context) {
       }
 
       // 替换占位符
-      html = html.replace(
+      html = html.replaceAll(
         'window.__ENV__.PASSWORD = "{{PASSWORD}}";',
         `window.__ENV__.PASSWORD = "${passwordHash}";`
       );
